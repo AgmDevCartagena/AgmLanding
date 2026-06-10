@@ -1,0 +1,8 @@
+services:
+  web:
+    build: .
+    image: agm-landing
+    container_name: agm-landing
+    ports:
+      - "80:80"
+    restart: unless-stopped
