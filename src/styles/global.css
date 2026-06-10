@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: false;
+}
+@plugin "daisyui/theme" {
+  name: "agm";
+  default: true;
+  prefersdark: true;
+  color-scheme: light;
+
+  --color-base-100: #FFFFFF;
+  --color-base-200: #F2F2F2;
+  --color-base-300: #E4E7EA;
+  --color-base-content: #16323F;
+  --color-primary: #0477BF;
+  --color-primary-content: #FFFFFF;
+  --color-secondary: #048ABF;
+  --color-secondary-content: #FFFFFF;
+  --color-accent: #04B2D9;
+  --color-accent-content: #FFFFFF;
+  --color-neutral: #1E3A4C;
+  --color-neutral-content: #F2F2F2;
+  --color-info: #04C4D9;
+  --color-info-content: #07303A;
+  --color-success: #16A34A;
+  --color-success-content: #FFFFFF;
+  --color-warning: #F59E0B;
+  --color-warning-content: #2A1D00;
+  --color-error: #DC2626;
+  --color-error-content: #FFFFFF;
+
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* Reveal al hacer scroll: solo se oculta contenido si hay JS (html.js) */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+  transition-delay: var(--reveal-delay, 0s), var(--reveal-delay, 0s), 0s;
+}
+
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,49 @@
+---
+import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "AGM Desarrollos — Proyectos de TI",
+	description = "Portafolio de proyectos de tecnología de AGM Desarrollos: aplicaciones en operación y de apoyo, tecnologías, equipos de trabajo y soporte.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="motion-safe:scroll-smooth scroll-pt-20">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		<script is:inline>document.documentElement.classList.add("js");</script>
+	</head>
+	<body>
+		<slot />
+		<script>
+			const elements = document.querySelectorAll("[data-reveal]");
+			if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+				elements.forEach((element) => element.classList.add("is-visible"));
+			} else {
+				const observer = new IntersectionObserver(
+					(entries) => {
+						for (const entry of entries) {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("is-visible");
+								observer.unobserve(entry.target);
+							}
+						}
+					},
+					{ threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
+				);
+				elements.forEach((element) => observer.observe(element));
+			}
+		</script>
+	</body>
+</html>

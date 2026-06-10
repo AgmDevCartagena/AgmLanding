@@ -1,0 +1,73 @@
+---
+const etapas = [
+	{
+		name: "Levantamiento de requerimientos",
+		text: "Los analistas definen con cada empresa qué necesita la aplicación antes de escribir una línea de código.",
+	},
+	{
+		name: "Desarrollo",
+		text: "El equipo construye con el stack que mejor encaja en cada proyecto: Laravel, Spring Boot, NestJS, React o Angular.",
+	},
+	{
+		name: "Pruebas",
+		text: "Cada aplicación se valida en un ambiente de pruebas antes de llegar a los usuarios.",
+	},
+	{
+		name: "Producción y soporte",
+		text: "Las aplicaciones en producción se atienden por la mesa de ayuda GLPI y correo electrónico, con mejoras continuas.",
+	},
+];
+
+const empresas = [
+	"AGM Desarrollos",
+	"Bioger",
+	"Tránsitos",
+	"Sociedad Portuaria Mardique",
+	"Innovar",
+	"ESIP-Huila",
+];
+---
+
+<section id="nosotros" class="bg-base-100 py-20">
+	<div class="mx-auto grid max-w-6xl items-center gap-12 px-4 lg:grid-cols-2">
+		<div data-reveal>
+			<span class="badge badge-outline badge-primary">Quiénes somos</span>
+			<h2 class="mt-3 text-3xl font-bold sm:text-4xl">
+				El área de TI que construye y opera las aplicaciones del grupo
+			</h2>
+			<p class="mt-4 opacity-70">
+				Desarrollamos software a la medida para AGM Desarrollos y sus empresas
+				aliadas: sistemas de tránsito, gestión documental, georreferenciación y
+				herramientas internas de apoyo. Cada aplicación pasa por el mismo ciclo,
+				del requerimiento a la operación, y se mantiene con soporte propio.
+			</p>
+			<div class="mt-6 flex flex-wrap gap-2">
+				{empresas.map((empresa) => (
+					<span class="badge badge-ghost gap-1">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+						</svg>
+						{empresa}
+					</span>
+				))}
+			</div>
+		</div>
+		<ul class="timeline timeline-vertical timeline-compact timeline-snap-icon" data-reveal style="--reveal-delay: 150ms">
+			{etapas.map((etapa, index) => (
+				<li>
+					{index > 0 && <hr class="bg-primary/30" />}
+					<div class="timeline-middle text-primary">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
+							<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+						</svg>
+					</div>
+					<div class="timeline-end timeline-box border-base-300">
+						<span class="font-bold text-primary">{etapa.name}</span>
+						<p class="mt-1 text-sm opacity-70">{etapa.text}</p>
+					</div>
+					{index < etapas.length - 1 && <hr class="bg-primary/30" />}
+				</li>
+			))}
+		</ul>
+	</div>
+</section>
