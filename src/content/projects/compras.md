@@ -5,10 +5,10 @@ empresa:
   - "AGM Desarrollos"
 ambiente: "Desarrollo"
 tecnologias:
-  - "Front: Next.js 14 (App Router), React 19, Typescript, Tailwind Css, Shadcn/ui"
+  - "Front: React 19, Typescript, Tailwind Css, Shadcn/ui"
   - "Back: Nestjs 10, Typescript, Prisma Orm"
   - "BD: Postgresql 16, Redis 7"
-talentoHumano: "Desarrolladores: Ramiro - Jose Melendez · Analista Requerimiento: Keila Hoyos"
+talentoHumano: "Desarrolladores: Jose Melendez - Ramiro · Analista Requerimiento: Keila Hoyos"
 soporte: "Glpi - Correo Electrónico"
 observaciones: "Proveedores, solicitud compras, integración Smart Document, integración IA"
 maquinas:
