@@ -72,14 +72,22 @@ const ambienteBadge = (ambiente?: string) => {
 										class:list={[
 											"break-inside-avoid mb-6 card card-border border-base-300 bg-base-100 transition-shadow hover:shadow-lg",
 											data.url && "cursor-pointer hover:border-primary/50",
-										]}
+										]} 
 									>
-										{data.image && (
-											<figure>
-												<img src={data.image} alt={data.producto} class="h-auto max-w-full" loading="lazy" />
-											</figure>
-										)}
 										<div class="card-body gap-3">
+											{data.url && (
+												<div class="-mx-6 -mt-6 relative overflow-hidden rounded-t-box" style="aspect-ratio: 16/9;">
+													<iframe
+														src={data.url}
+														title={`Vista previa de ${data.producto}`}
+														loading="lazy"
+														style="width: 1920px; height: 1080px; transform: scale(0.185); transform-origin: top left;"
+														referrerpolicy="no-referrer"
+														class="absolute inset-0 h-full w-full border-0"
+													/>
+													<div class="absolute inset-0 z-10" aria-hidden="true" />
+												</div>
+											)}
 											<div class="flex flex-wrap items-center justify-between gap-2">
 												<h3 class="card-title text-lg">
 													{data.producto}
