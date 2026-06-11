@@ -1,9 +1,12 @@
 ---
+import AnimatedStat from "./AnimatedStat.astro";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
 const total = projects.length;
-const enProduccion = projects.filter(({ data }) => data.ambiente === "Producción").length;
+const enProduccion = projects.filter(
+	({ data }) => data.ambiente === "Producción",
+).length;
 const enConstruccion = projects.filter(
 	({ data }) => data.ambiente === "Desarrollo" || data.ambiente === "Pruebas",
 ).length;
@@ -16,41 +19,57 @@ const enLevantamiento = projects.filter(
 	id="inicio"
 	class="hero min-h-[88vh] bg-linear-to-br from-primary via-secondary to-accent"
 >
-	<div class="hero-content w-full max-w-6xl flex-col items-start px-4 py-20 text-primary-content">
-		<div class="max-w-2xl" data-reveal>
-			<span class="badge badge-outline border-primary-content/40 text-primary-content">
-				Área de Tecnología · AGM Desarrollos
-			</span>
-			<h1 class="mt-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-				El software que opera y apoya el negocio
-			</h1>
-			<p class="py-6 text-lg opacity-90">
-				Portafolio de aplicaciones desarrolladas y operadas por el equipo de TI de
-				AGM Desarrollos para el grupo y sus aliados: tránsitos, Bioger, Sociedad
-				Portuaria Mardique y más.
-			</p>
-			<div class="flex flex-col gap-3 sm:flex-row">
-				<a href="#proyectos" class="btn btn-lg border-0 bg-base-100 text-primary">Ver portafolio</a>
-				<a href="#contacto" class="btn btn-outline btn-lg border-primary-content text-primary-content">Habla con el equipo</a>
+	<div
+		class="hero-content w-full max-w-7xl flex-col items-start px-4 py-20 text-primary-content"
+	>
+		<div class="flex justify-between w-full">
+			<div class="max-w-2xl" data-reveal>
+				<span
+					class="badge badge-outline border-primary-content/40 text-primary-content"
+				>
+					Área de Tecnología · AGM Desarrollos
+				</span>
+				<h1
+					class="mt-4 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+				>
+					El software que opera y apoya el negocio
+				</h1>
+				<p class="py-6 text-lg opacity-90">
+					Portafolio de aplicaciones desarrolladas y operadas por el
+					equipo de TI de AGM Desarrollos para el grupo y sus aliados:
+					tránsitos, Bioger, Sociedad Portuaria Mardique y más.
+				</p>
+				<div class="flex flex-col gap-3 sm:flex-row">
+					<a
+						href="#proyectos"
+						class="btn btn-lg border-0 bg-base-100 text-primary"
+						>Ver portafolio</a
+					>
+					<a
+						href="#contacto"
+						class="btn btn-outline btn-lg border-primary-content text-primary-content"
+						>Habla con el equipo</a
+					>
+				</div>
 			</div>
+			<img
+				src="./logoAGM.png"
+				alt="Ilustración de personas trabajando en tecnología"
+				class="hidden md:block max-w-sm lg:max-w-md bg-white/80 p-4 rounded-lg"
+				data-reveal
+				style="--reveal-delay: 160ms"
+			/>
 		</div>
-		<div class="stats stats-vertical mt-12 w-full bg-base-100/10 text-primary-content shadow-lg backdrop-blur sm:stats-horizontal" data-reveal style="--reveal-delay: 200ms">
-			<div class="stat">
-				<div class="stat-value">{total}</div>
-				<div class="stat-title text-primary-content/70">Aplicaciones en el portafolio</div>
-			</div>
-			<div class="stat">
-				<div class="stat-value">{enProduccion}</div>
-				<div class="stat-title text-primary-content/70">En producción</div>
-			</div>
-			<div class="stat">
-				<div class="stat-value">{enConstruccion}</div>
-				<div class="stat-title text-primary-content/70">En desarrollo y pruebas</div>
-			</div>
-			<div class="stat">
-				<div class="stat-value">{enLevantamiento}</div>
-				<div class="stat-title text-primary-content/70">En levantamiento de requerimientos</div>
-			</div>
+
+		<div
+			class="stats stats-vertical mt-12 w-full text-primary-content backdrop-blur sm:stats-horizontal overflow-hidden"
+			data-reveal
+			style="--reveal-delay: 160ms"
+		>
+			<AnimatedStat value={total} title="Aplicaciones en el portafolio" delay={0} />
+			<AnimatedStat value={enProduccion} title="En producción" delay={100} />
+			<AnimatedStat value={enConstruccion} title="En desarrollo y pruebas" delay={200} />
+			<AnimatedStat value={enLevantamiento} title="En levantamiento de requerimientos" delay={300} />
 		</div>
 	</div>
 </section>

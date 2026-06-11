@@ -1,0 +1,69 @@
+---
+export interface Props {
+	value: number;
+	title: string;
+	suffix?: string;
+	delay?: number;
+}
+
+const { value, title, suffix = "", delay = 0 } = Astro.props;
+---
+
+<div
+	class="stat"
+	data-count-value={value}
+	data-count-suffix={suffix}
+	data-reveal
+	style={`--reveal-delay: ${delay}ms`}
+>
+	<div class="stat-value text-[4rem]" data-count>0</div>
+	<div class="stat-title text-primary-content/70">{title}</div>
+</div>
+
+<script is:inline>
+	(() => {
+		const isReduced = window.matchMedia(
+			"(prefers-reduced-motion: reduce)",
+		).matches;
+		if (isReduced) return;
+
+		const counters = document.querySelectorAll("[data-count]");
+
+		if (!counters.length) return;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (!entry.isIntersecting) return;
+
+					const el = entry.target;
+					const parent = el.closest("[data-count-value]");
+					if (!parent) return;
+
+					const target = Number(parent.dataset.countValue) || 0;
+					const suffix = parent.dataset.countSuffix || "";
+					const duration = 1500;
+					const start = performance.now();
+
+					function update(now) {
+						const elapsed = now - start;
+						const progress = Math.min(elapsed / duration, 1);
+						const eased = 1 - Math.pow(1 - progress, 3);
+						const current = Math.round(eased * target);
+						el.textContent = current + suffix;
+
+						if (progress < 1) {
+							requestAnimationFrame(update);
+						}
+					}
+
+					requestAnimationFrame(update);
+					observer.unobserve(el);
+				});
+			},
+			{ threshold: 0.5 },
+		);
+
+		counters.forEach((el) => observer.observe(el));
+	})();
+</script>

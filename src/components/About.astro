@@ -42,8 +42,8 @@ const empresas = [
 				del requerimiento a la operación, y se mantiene con soporte propio.
 			</p>
 			<div class="mt-6 flex flex-wrap gap-2">
-				{empresas.map((empresa) => (
-					<span class="badge badge-ghost gap-1">
+				{empresas.map((empresa, index) => (
+					<span class="badge badge-ghost gap-1 transition-all duration-300 hover:badge-primary hover:shadow-md" data-reveal style={`--reveal-delay: ${50 + index * 30}ms`}>
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
 						</svg>
@@ -54,14 +54,14 @@ const empresas = [
 		</div>
 		<ul class="timeline timeline-vertical timeline-compact timeline-snap-icon" data-reveal style="--reveal-delay: 150ms">
 			{etapas.map((etapa, index) => (
-				<li>
+				<li data-reveal style={`--reveal-delay: ${150 + index * 80}ms`}>
 					{index > 0 && <hr class="bg-primary/30" />}
 					<div class="timeline-middle text-primary">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
 							<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
 						</svg>
 					</div>
-					<div class="timeline-end timeline-box border-base-300">
+					<div class="timeline-end timeline-box border-base-300 transition-all duration-300 hover:shadow-lg hover:border-primary/50">
 						<span class="font-bold text-primary">{etapa.name}</span>
 						<p class="mt-1 text-sm opacity-70">{etapa.text}</p>
 					</div>
