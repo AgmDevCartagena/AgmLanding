@@ -14,6 +14,6 @@ observaciones: "Mejora del georreferenciación"
 maquinas:
   - "APP"
 caracteristicaMaquina: ""
-url: "http://192.168.105.6:4200/auth/login"
+url: "http://192.168.105.6/auth/login"
 order: 4
 ---
