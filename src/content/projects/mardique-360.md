@@ -14,5 +14,6 @@ observaciones: ""
 maquinas: []
 caracteristicaMaquina: ""
 url: "https://mardique360.spmardique.com/gestion/login"
+image: "/Mardique.jpeg"
 order: 4
 ---

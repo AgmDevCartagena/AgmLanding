@@ -19,5 +19,6 @@ maquinas:
   - "NAS"
 caracteristicaMaquina: ""
 url: "https://smartdoc.agmdesarrollos.com/dms/login"
+image: "/SmartDocument.jpeg"
 order: 5
 ---

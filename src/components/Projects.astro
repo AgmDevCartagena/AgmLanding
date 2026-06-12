@@ -75,16 +75,25 @@ const ambienteBadge = (ambiente?: string) => {
 										]} 
 									>
 										<div class="card-body gap-3">
-											{data.url && (
+											{(data.image || data.url) && (
 												<div class="-mx-6 -mt-6 relative overflow-hidden rounded-t-box" style="aspect-ratio: 16/9;">
-													<iframe
-														src={data.url}
-														title={`Vista previa de ${data.producto}`}
-														loading="lazy"
-														style="width: 1920px; height: 1080px; transform: scale(0.185); transform-origin: top left;"
-														referrerpolicy="no-referrer"
-														class="absolute inset-0 h-full w-full border-0"
-													/>
+													{data.image ? (
+														<img
+															src={data.image}
+															alt={`Vista previa de ${data.producto}`}
+															loading="lazy"
+															class="absolute inset-0 h-full w-full object-cover object-top"
+														/>
+													) : (
+														<iframe
+															src={data.url}
+															title={`Vista previa de ${data.producto}`}
+															loading="lazy"
+															style="width: 1920px; height: 1080px; transform: scale(0.185); transform-origin: top left;"
+															referrerpolicy="no-referrer"
+															class="absolute inset-0 h-full w-full border-0"
+														/>
+													)}
 													<div class="absolute inset-0 z-10" aria-hidden="true" />
 												</div>
 											)}
