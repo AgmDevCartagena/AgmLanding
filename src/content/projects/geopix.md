@@ -15,5 +15,5 @@ maquinas:
   - "APP"
 caracteristicaMaquina: ""
 url: "http://192.168.105.6/auth/login"
-order: 4
+order: 2
 ---

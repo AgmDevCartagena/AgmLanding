@@ -16,5 +16,5 @@ maquinas:
   - "APP-DB"
 caracteristicaMaquina: ""
 url: "https://radar.agmdesarrollos.com/login"
-order: 19
+order: 7
 ---

@@ -14,6 +14,6 @@ observaciones: "Proveedores, solicitud compras, integración Smart Document, int
 maquinas:
   - "App-DB"
 caracteristicaMaquina: ""
-url: "http://192.168.105.8:3002/login"
+url: "http://192.168.105.11:3002/login"
 order: 11
 ---
